@@ -2,9 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\Bins;
 
-use BackedEnum;
 use Filament\Resources\Resource;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
@@ -19,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\Bins\Tables\BinsTable;
  */
 class BinResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedScale;
+    protected static ?string $navigationIcon = 'heroicon-o-scale';
 
     protected static ?int $navigationSort = 13;
 

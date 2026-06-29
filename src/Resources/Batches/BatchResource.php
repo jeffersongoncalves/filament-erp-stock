@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\Batches;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Stock\FilamentErpStockPlugin;
@@ -17,7 +15,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\Batches\Tables\BatchesTable;
 
 class BatchResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?int $navigationSort = 5;
 
@@ -37,9 +35,9 @@ class BatchResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return BatchForm::configure($schema);
+        return BatchForm::configure($form);
     }
 
     public static function table(Table $table): Table

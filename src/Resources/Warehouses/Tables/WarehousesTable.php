@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\Warehouses\Tables;
 
-use Filament\Actions;
+use Filament\Tables\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
@@ -47,11 +47,11 @@ class WarehousesTable
                     ->label('Company')
                     ->relationship('company', 'name'),
             ])
-            ->recordActions([
+            ->actions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->toolbarActions([
+            ->bulkActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),
