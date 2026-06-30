@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\StockReconciliations;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Stock\FilamentErpStockPlugin;
@@ -16,7 +18,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\StockReconciliations\Tables\S
 
 class StockReconciliationResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-adjustments-horizontal';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAdjustmentsHorizontal;
 
     protected static ?int $navigationSort = 11;
 
@@ -36,9 +38,9 @@ class StockReconciliationResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return StockReconciliationForm::configure($form);
+        return StockReconciliationForm::configure($schema);
     }
 
     public static function table(Table $table): Table

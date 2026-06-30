@@ -2,8 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\StockLedgerEntries\Tables;
 
+use Filament\Actions;
 use Filament\Forms\Components\DatePicker;
-use Filament\Tables\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
@@ -68,7 +68,7 @@ class StockLedgerEntriesTable
                 TernaryFilter::make('is_cancelled')
                     ->label('Cancelled'),
                 Filter::make('posting_date')
-                    ->form([
+                    ->schema([
                         DatePicker::make('from')->label('From'),
                         DatePicker::make('until')->label('Until'),
                     ])
@@ -84,7 +84,7 @@ class StockLedgerEntriesTable
                             );
                     }),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\ViewAction::make(),
             ]);
     }

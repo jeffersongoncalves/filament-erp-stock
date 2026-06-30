@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\SerialNos\Tables;
 
-use Filament\Tables\Actions;
+use Filament\Actions;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -42,11 +42,11 @@ class SerialNosTable
                     ->label('Warehouse')
                     ->relationship('warehouse', 'name'),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),

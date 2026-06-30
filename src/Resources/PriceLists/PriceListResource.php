@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\PriceLists;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Stock\FilamentErpStockPlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\PriceLists\Tables\PriceListsT
 
 class PriceListResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-tag';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTag;
 
     protected static ?int $navigationSort = 3;
 
@@ -35,9 +37,9 @@ class PriceListResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return PriceListForm::configure($form);
+        return PriceListForm::configure($schema);
     }
 
     public static function table(Table $table): Table
