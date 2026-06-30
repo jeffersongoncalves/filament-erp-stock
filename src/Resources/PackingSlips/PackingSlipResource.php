@@ -2,10 +2,8 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\PackingSlips;
 
-use BackedEnum;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Stock\FilamentErpStockPlugin;
@@ -18,7 +16,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\PackingSlips\Tables\PackingSl
 
 class PackingSlipResource extends Resource
 {
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedArchiveBox;
+    protected static ?string $navigationIcon = 'heroicon-o-archive-box';
 
     protected static ?int $navigationSort = 16;
 
@@ -38,9 +36,9 @@ class PackingSlipResource extends Resource
         }
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return PackingSlipForm::configure($schema);
+        return PackingSlipForm::configure($form);
     }
 
     public static function table(Table $table): Table
