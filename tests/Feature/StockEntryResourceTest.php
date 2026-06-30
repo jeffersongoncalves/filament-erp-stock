@@ -1,5 +1,6 @@
 <?php
 
+use Filament\Actions\Testing\TestAction;
 use JeffersonGoncalves\Erp\Accounting\Models\Account;
 use JeffersonGoncalves\Erp\Accounting\Models\GlEntry;
 use JeffersonGoncalves\Erp\Accounting\Services\GeneralLedgerService;
@@ -65,7 +66,7 @@ it('submits a material receipt through the UI and posts the stock ledger, bin an
     $entry = makeReceipt();
 
     Livewire::test(ListStockEntries::class)
-        ->callTableAction('submit', $entry, [
+        ->callAction(TestAction::make('submit')->table($entry), data: [
             'counter_account_id' => $this->counter->id,
         ]);
 
@@ -111,14 +112,14 @@ it('cancels a submitted receipt through the UI, reverting the bin and reversing 
     $entry = makeReceipt();
 
     Livewire::test(ListStockEntries::class)
-        ->callTableAction('submit', $entry, [
+        ->callAction(TestAction::make('submit')->table($entry), data: [
             'counter_account_id' => $this->counter->id,
         ]);
 
     expect($entry->refresh()->docstatus)->toBe(DocStatus::Submitted);
 
     Livewire::test(ListStockEntries::class)
-        ->callTableAction('cancel', $entry);
+        ->callAction(TestAction::make('cancel')->table($entry));
 
     expect($entry->refresh()->docstatus)->toBe(DocStatus::Cancelled);
 

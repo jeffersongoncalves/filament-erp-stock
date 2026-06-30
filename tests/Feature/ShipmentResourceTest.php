@@ -1,5 +1,6 @@
 <?php
 
+use Filament\Actions\Testing\TestAction;
 use JeffersonGoncalves\Erp\Core\Enums\DocStatus;
 use JeffersonGoncalves\Erp\Core\Models\Company;
 use JeffersonGoncalves\Erp\Stock\Models\Shipment;
@@ -50,7 +51,7 @@ it('submits a shipment through the UI, flipping the docstatus', function () {
     expect($shipment->docstatus)->toBe(DocStatus::Draft);
 
     Livewire::test(ListShipments::class)
-        ->callTableAction('submit', $shipment);
+        ->callAction(TestAction::make('submit')->table($shipment));
 
     expect($shipment->refresh()->docstatus)->toBe(DocStatus::Submitted);
 });
@@ -61,12 +62,12 @@ it('cancels a submitted shipment through the UI, flipping the docstatus', functi
     ]);
 
     Livewire::test(ListShipments::class)
-        ->callTableAction('submit', $shipment);
+        ->callAction(TestAction::make('submit')->table($shipment));
 
     expect($shipment->refresh()->docstatus)->toBe(DocStatus::Submitted);
 
     Livewire::test(ListShipments::class)
-        ->callTableAction('cancel', $shipment);
+        ->callAction(TestAction::make('cancel')->table($shipment));
 
     expect($shipment->refresh()->docstatus)->toBe(DocStatus::Cancelled);
 });

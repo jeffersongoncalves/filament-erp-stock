@@ -3,17 +3,17 @@
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\StockLedgerEntries\Schemas;
 
 use Filament\Infolists\Components\IconEntry;
-use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Infolist;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 
 class StockLedgerEntryInfolist
 {
-    public static function configure(Infolist $infolist): Infolist
+    public static function configure(Schema $schema): Schema
     {
-        return $infolist
+        return $schema
             ->columns(null)
-            ->schema([
+            ->components([
                 Section::make('Ledger Entry')
                     ->schema([
                         TextEntry::make('posting_date')

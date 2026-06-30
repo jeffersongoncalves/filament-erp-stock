@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\PutawayRules;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Stock\FilamentErpStockPlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\PutawayRules\Tables\PutawayRu
 
 class PutawayRuleResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-map-pin';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedMapPin;
 
     protected static ?int $navigationSort = 14;
 
@@ -35,9 +37,9 @@ class PutawayRuleResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return PutawayRuleForm::configure($form);
+        return PutawayRuleForm::configure($schema);
     }
 
     public static function table(Table $table): Table

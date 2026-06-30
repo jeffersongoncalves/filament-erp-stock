@@ -2,10 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\Shipments\RelationManagers;
 
+use Filament\Actions;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Actions;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -15,11 +15,11 @@ class ParcelsRelationManager extends RelationManager
 
     protected static ?string $title = 'Parcels';
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->columns(2)
-            ->schema([
+            ->components([
                 TextInput::make('length')
                     ->label('Length')
                     ->numeric()
@@ -62,11 +62,11 @@ class ParcelsRelationManager extends RelationManager
             ->headerActions([
                 Actions\CreateAction::make(),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),

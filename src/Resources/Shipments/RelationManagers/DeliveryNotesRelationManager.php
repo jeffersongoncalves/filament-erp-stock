@@ -2,10 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\Shipments\RelationManagers;
 
+use Filament\Actions;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Actions;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -15,11 +15,11 @@ class DeliveryNotesRelationManager extends RelationManager
 
     protected static ?string $title = 'Delivery Notes';
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->columns(1)
-            ->schema([
+            ->components([
                 Select::make('delivery_note_id')
                     ->label('Delivery Note')
                     ->relationship('deliveryNote', 'customer_name')
@@ -45,11 +45,11 @@ class DeliveryNotesRelationManager extends RelationManager
             ->headerActions([
                 Actions\CreateAction::make(),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),

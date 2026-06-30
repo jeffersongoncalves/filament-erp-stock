@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\PutawayRules\Tables;
 
-use Filament\Tables\Actions;
+use Filament\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
@@ -46,11 +46,11 @@ class PutawayRulesTable
                     ->searchable()
                     ->preload(),
             ])
-            ->actions([
+            ->recordActions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),

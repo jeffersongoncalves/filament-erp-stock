@@ -1,5 +1,6 @@
 <?php
 
+use Filament\Actions\Testing\TestAction;
 use JeffersonGoncalves\Erp\Core\Enums\DocStatus;
 use JeffersonGoncalves\Erp\Stock\Models\DeliveryNote;
 use JeffersonGoncalves\Erp\Stock\Models\PackingSlip;
@@ -48,7 +49,7 @@ it('submits a packing slip through the UI, flipping the docstatus', function () 
     expect($slip->docstatus)->toBe(DocStatus::Draft);
 
     Livewire::test(ListPackingSlips::class)
-        ->callTableAction('submit', $slip);
+        ->callAction(TestAction::make('submit')->table($slip));
 
     expect($slip->refresh()->docstatus)->toBe(DocStatus::Submitted);
 });
@@ -57,12 +58,12 @@ it('cancels a submitted packing slip through the UI, flipping the docstatus', fu
     $slip = PackingSlip::factory()->create();
 
     Livewire::test(ListPackingSlips::class)
-        ->callTableAction('submit', $slip);
+        ->callAction(TestAction::make('submit')->table($slip));
 
     expect($slip->refresh()->docstatus)->toBe(DocStatus::Submitted);
 
     Livewire::test(ListPackingSlips::class)
-        ->callTableAction('cancel', $slip);
+        ->callAction(TestAction::make('cancel')->table($slip));
 
     expect($slip->refresh()->docstatus)->toBe(DocStatus::Cancelled);
 });
