@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\PurchaseReceipts;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Stock\FilamentErpStockPlugin;
@@ -16,7 +18,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\PurchaseReceipts\Tables\Purch
 
 class PurchaseReceiptResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-inbox-arrow-down';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedInboxArrowDown;
 
     protected static ?int $navigationSort = 10;
 
@@ -36,9 +38,9 @@ class PurchaseReceiptResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return PurchaseReceiptForm::configure($form);
+        return PurchaseReceiptForm::configure($schema);
     }
 
     public static function table(Table $table): Table

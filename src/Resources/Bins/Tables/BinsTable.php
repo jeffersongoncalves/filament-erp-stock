@@ -45,6 +45,6 @@ class BinsTable
                     ->searchable()
                     ->preload(),
             ])
-            ->actions([]);
+            ->recordActions([]);
     }
 }

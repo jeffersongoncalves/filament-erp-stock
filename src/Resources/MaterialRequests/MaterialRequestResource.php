@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\MaterialRequests;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Stock\FilamentErpStockPlugin;
@@ -16,7 +18,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\MaterialRequests\Tables\Mater
 
 class MaterialRequestResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocumentList;
 
     protected static ?int $navigationSort = 8;
 
@@ -36,9 +38,9 @@ class MaterialRequestResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return MaterialRequestForm::configure($form);
+        return MaterialRequestForm::configure($schema);
     }
 
     public static function table(Table $table): Table

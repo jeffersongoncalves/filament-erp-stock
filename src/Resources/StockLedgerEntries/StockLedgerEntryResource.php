@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\StockLedgerEntries;
 
-use Filament\Infolists\Infolist;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
@@ -20,7 +22,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\StockLedgerEntries\Tables\Sto
  */
 class StockLedgerEntryResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-queue-list';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedQueueList;
 
     protected static ?int $navigationSort = 12;
 
@@ -44,9 +46,9 @@ class StockLedgerEntryResource extends Resource
         }
     }
 
-    public static function infolist(Infolist $infolist): Infolist
+    public static function infolist(Schema $schema): Schema
     {
-        return StockLedgerEntryInfolist::configure($infolist);
+        return StockLedgerEntryInfolist::configure($schema);
     }
 
     public static function table(Table $table): Table

@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\Items;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Stock\FilamentErpStockPlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\Items\Tables\ItemsTable;
 
 class ItemResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-cube';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCube;
 
     protected static ?int $navigationSort = 1;
 
@@ -35,9 +37,9 @@ class ItemResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return ItemForm::configure($form);
+        return ItemForm::configure($schema);
     }
 
     public static function table(Table $table): Table

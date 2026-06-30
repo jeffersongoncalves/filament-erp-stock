@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\Warehouses;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Stock\FilamentErpStockPlugin;
@@ -15,7 +17,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\Warehouses\Tables\WarehousesT
 
 class WarehouseResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-building-storefront';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBuildingStorefront;
 
     protected static ?int $navigationSort = 2;
 
@@ -35,9 +37,9 @@ class WarehouseResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return WarehouseForm::configure($form);
+        return WarehouseForm::configure($schema);
     }
 
     public static function table(Table $table): Table

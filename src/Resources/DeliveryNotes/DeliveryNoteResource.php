@@ -2,8 +2,10 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\DeliveryNotes;
 
-use Filament\Forms\Form;
+use BackedEnum;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use JeffersonGoncalves\Erp\Stock\Support\ModelResolver;
 use JeffersonGoncalves\FilamentErp\Stock\FilamentErpStockPlugin;
@@ -16,7 +18,7 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\DeliveryNotes\Tables\Delivery
 
 class DeliveryNoteResource extends Resource
 {
-    protected static ?string $navigationIcon = 'heroicon-o-truck';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTruck;
 
     protected static ?int $navigationSort = 9;
 
@@ -36,9 +38,9 @@ class DeliveryNoteResource extends Resource
         }
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return DeliveryNoteForm::configure($form);
+        return DeliveryNoteForm::configure($schema);
     }
 
     public static function table(Table $table): Table
