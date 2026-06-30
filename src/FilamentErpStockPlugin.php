@@ -11,9 +11,12 @@ use JeffersonGoncalves\FilamentErp\Stock\Resources\DeliveryNotes\DeliveryNoteRes
 use JeffersonGoncalves\FilamentErp\Stock\Resources\ItemPrices\ItemPriceResource;
 use JeffersonGoncalves\FilamentErp\Stock\Resources\Items\ItemResource;
 use JeffersonGoncalves\FilamentErp\Stock\Resources\MaterialRequests\MaterialRequestResource;
+use JeffersonGoncalves\FilamentErp\Stock\Resources\PackingSlips\PackingSlipResource;
 use JeffersonGoncalves\FilamentErp\Stock\Resources\PriceLists\PriceListResource;
 use JeffersonGoncalves\FilamentErp\Stock\Resources\PurchaseReceipts\PurchaseReceiptResource;
+use JeffersonGoncalves\FilamentErp\Stock\Resources\PutawayRules\PutawayRuleResource;
 use JeffersonGoncalves\FilamentErp\Stock\Resources\SerialNos\SerialNoResource;
+use JeffersonGoncalves\FilamentErp\Stock\Resources\Shipments\ShipmentResource;
 use JeffersonGoncalves\FilamentErp\Stock\Resources\StockEntries\StockEntryResource;
 use JeffersonGoncalves\FilamentErp\Stock\Resources\StockLedgerEntries\StockLedgerEntryResource;
 use JeffersonGoncalves\FilamentErp\Stock\Resources\StockReconciliations\StockReconciliationResource;
@@ -44,6 +47,9 @@ class FilamentErpStockPlugin implements Plugin
             'stock_reconciliation' => StockReconciliationResource::class,
             'stock_ledger_entry' => StockLedgerEntryResource::class,
             'bin' => BinResource::class,
+            'putaway_rule' => PutawayRuleResource::class,
+            'shipment' => ShipmentResource::class,
+            'packing_slip' => PackingSlipResource::class,
         ]));
 
         $panel->widgets($this->resolveWidgets());
