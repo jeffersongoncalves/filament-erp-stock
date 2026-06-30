@@ -2,7 +2,7 @@
 
 namespace JeffersonGoncalves\FilamentErp\Stock\Resources\PriceLists\Tables;
 
-use Filament\Actions;
+use Filament\Tables\Actions;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
@@ -38,11 +38,11 @@ class PriceListsTable
                 TernaryFilter::make('is_buying')
                     ->label('Is Buying'),
             ])
-            ->recordActions([
+            ->actions([
                 Actions\EditAction::make(),
                 Actions\DeleteAction::make(),
             ])
-            ->toolbarActions([
+            ->bulkActions([
                 Actions\BulkActionGroup::make([
                     Actions\DeleteBulkAction::make(),
                 ]),
