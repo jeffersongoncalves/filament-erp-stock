@@ -1,6 +1,5 @@
 <?php
 
-use Filament\Actions\Testing\TestAction;
 use JeffersonGoncalves\Erp\Accounting\Models\Account;
 use JeffersonGoncalves\Erp\Accounting\Services\GeneralLedgerService;
 use JeffersonGoncalves\Erp\Core\Enums\DocStatus;
@@ -62,7 +61,7 @@ it('ships stock outbound through the UI, reducing the bin and posting cost of go
     $note = $note->refresh();
 
     Livewire::test(ListDeliveryNotes::class)
-        ->callAction(TestAction::make('submit')->table($note), data: [
+        ->callTableAction('submit', $note, [
             'counter_account_id' => $this->cogs->id,
         ]);
 
